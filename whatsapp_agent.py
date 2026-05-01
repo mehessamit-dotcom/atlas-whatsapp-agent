@@ -1,12 +1,13 @@
 from flask import Flask, request
 from google import genai
 import requests
+import os
 
 app = Flask(__name__)
-client = genai.Client(api_key="AIzaSyA3PjMxEd3sbU94ywnENa7jxIaxgZh86sg")
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
-ULTRAMSG_INSTANCE = "instance172688"
-ULTRAMSG_TOKEN = "92hzn3m8pgvr9foq"
+ULTRAMSG_INSTANCE = os.environ.get("ULTRAMSG_INSTANCE")
+ULTRAMSG_TOKEN = os.environ.get("ULTRAMSG_TOKEN")
 
 conversations = {}
 
